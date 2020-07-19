@@ -19,15 +19,15 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static('public'));
 const mongodb_uri = process.env.mongodbUri || "mongodb://loclalhost/workouts";
-mondgoose.connect(mongodb_uri,{
-    useNewUrlParser:true,
-    useFindAndMod:false;
+mondgoose.connect(mongodb_uri, {
+    useNewUrlParser: true,
+    useFindAndMod: false;
     app.use(routes);
     app.use(htmlRoutes);
 
 
 });
-app.listen(PORT,() => {
+app.listen(PORT, () => {
 
-    console.log(`App running on port ${PORT}`; 
-});
+    console.log(`App running on port ${PORT}`)
+};)
