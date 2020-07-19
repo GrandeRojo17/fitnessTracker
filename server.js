@@ -7,7 +7,7 @@ const mongoose = require("mongoose");
 const htmlRoutes = require("./routes/htmlRoutes");
 const routes = require("./routes/apiRoutes");
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3033;
 
 const db = require("./models");
 
@@ -18,16 +18,15 @@ app.use(logger("dev"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static('public'));
-const mongodb_uri = process.env.mongodbUri || "mongodb://loclalhost/workouts";
-mondgoose.connect(mongodb_uri, {
+const mongodb_uri = process.env.MONGODB_URI || "mongodb://loclalhost/workouts";
+mongoose.connect(MONGODB_URI, {
     useNewUrlParser: true,
-    useFindAndMod: false;
-    app.use(routes);
-    app.use(htmlRoutes);
+    useFindAndModify: false
 
 
 });
+app.use(routes);
+app.use(htmlRoutes);
 app.listen(PORT, () => {
-
     console.log(`App running on port ${PORT}`)
-};)
+});
