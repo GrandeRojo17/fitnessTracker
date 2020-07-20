@@ -3,23 +3,30 @@
 // documents I drew up
 const express = require("express");
 const logger = require("morgan");
+//help connect to mongo database
 const mongoose = require("mongoose");
+//here are the routes
 const htmlRoutes = require("./routes/htmlRoutes");
 const routes = require("./routes/apiRoutes");
+//have envirorment variables inside of .env??
 
 const PORT = process.env.PORT || 3033;
-
-const db = require("./models");
-
+// const db = require("./models");
 const app = express();
+//This is where the database will be stored
+const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/workouts";
+
+
 
 app.use(logger("dev"));
 
 app.use(express.urlencoded({ extended: true }));
+//sending and recieving json
 app.use(express.json());
 app.use(express.static('public'));
-const mongodb_uri = process.env.MONGODB_URI || "mongodb://loclalhost/workouts";
+//
 mongoose.connect(MONGODB_URI, {
+    //these flags are necessary to always keep mongoose updated
     useNewUrlParser: true,
     useFindAndModify: false
 
@@ -28,5 +35,6 @@ mongoose.connect(MONGODB_URI, {
 app.use(routes);
 app.use(htmlRoutes);
 app.listen(PORT, () => {
-    console.log(`App running on port ${PORT}`)
+    console.log(`                                   
+    App running on port ${PORT}`)
 });
