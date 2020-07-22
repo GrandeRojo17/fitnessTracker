@@ -5,9 +5,10 @@ const express = require("express");
 const logger = require("morgan");
 //help connect to mongo database
 const mongoose = require("mongoose");
-//here are the routes
+//here are the routes to require and then to use
 const htmlRoutes = require("./routes/htmlRoutes");
-const routes = require("./routes/apiRoutes");
+const apiRoutes = require("./routes/apiRoutes");
+
 //have envirorment variables inside of .env??
 
 const PORT = process.env.PORT || 3033;
@@ -32,8 +33,9 @@ mongoose.connect(MONGODB_URI, {
 
 
 });
-app.use(routes);
-app.use(htmlRoutes);
+
+app.use('/apiRoutes', apiRoutes);
+app.use('/htmlRoutes', htmlRoutes);
 app.listen(PORT, () => {
     console.log(`                                   
     App running on port ${PORT}`)
