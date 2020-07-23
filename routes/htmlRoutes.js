@@ -1,5 +1,5 @@
 const path = require("path");
-const router = require("./apiRoutes");
+const router = require("express").Router();
 
 router.get("/exercise", (req, res) => {
     res.sendFile(
