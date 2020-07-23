@@ -2,6 +2,11 @@
 //have to look towards last few assignmenets and look at the 
 // documents I drew up
 const express = require("express");
+app.use(express.urlencoded({ extended: true }));
+//sending and recieving json
+app.use(express.json());
+app.use(express.static('public'));
+
 const logger = require("morgan");
 //help connect to mongo database
 const mongoose = require("mongoose");
@@ -21,10 +26,6 @@ const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/workout";
 
 app.use(logger("dev"));
 
-app.use(express.urlencoded({ extended: true }));
-//sending and recieving json
-app.use(express.json());
-app.use(express.static('public'));
 //
 mongoose.connect(MONGODB_URI, {
     //these flags are necessary to always keep mongoose updated
@@ -34,8 +35,8 @@ mongoose.connect(MONGODB_URI, {
 
 });
 
-app.use('/apiRoutes', apiRoutes);
-app.use('/htmlRoutes', htmlRoutes);
+app.use(apiRoutes);
+app.use(htmlRoutes);
 app.listen(PORT, () => {
     console.log(`                                   
     App running on port ${PORT}`)
