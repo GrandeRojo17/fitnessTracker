@@ -11,11 +11,11 @@ const apiRoutes = require("./routes/apiRoutes");
 
 //have envirorment variables inside of .env??
 
-const PORT = process.env.PORT || 3033;
+const PORT = process.env.PORT || 3000;
 // const db = require("./models");
 const app = express();
 //This is where the database will be stored
-const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/workouts";
+const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/workout";
 
 
 
