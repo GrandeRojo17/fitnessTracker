@@ -2,11 +2,7 @@
 //have to look towards last few assignmenets and look at the 
 // documents I drew up
 const express = require("express");
-app.use(express.urlencoded({ extended: true }));
-//sending and recieving json
-app.use(express.json());
-app.use(express.static('public'));
-
+const app = express();
 const logger = require("morgan");
 //help connect to mongo database
 const mongoose = require("mongoose");
@@ -17,10 +13,14 @@ const apiRoutes = require("./routes/apiRoutes");
 //have envirorment variables inside of .env??
 
 const PORT = process.env.PORT || 3000;
+app.use(express.urlencoded({ extended: true }));
+//sending and recieving json
+app.use(express.json());
+app.use(express.static('public'));
 // const db = require("./models");
-const app = express();
+
 //This is where the database will be stored
-const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/workout";
+const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/workouts";
 
 
 

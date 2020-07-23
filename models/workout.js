@@ -2,9 +2,10 @@ const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
 //adding name and type of workout, if workout is "cardio" related then focus on time spent working out.
-const WorkoutSchema = new Schema({
+const WorkoutSchema = new Schema(
+  {
   //"Enter a name for workout"
-  date: {
+  day: {
     type: Date,
     default: Date.now
   },
@@ -34,7 +35,10 @@ const WorkoutSchema = new Schema({
       distance: {
         type: Number
       }
-    }],
+
+    }
+  ]
+
 
 });
 
